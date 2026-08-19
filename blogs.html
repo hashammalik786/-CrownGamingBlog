@@ -121,25 +121,52 @@
 <!-- Main Navbar -->
 <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-deep-navy/80 backdrop-blur-lg">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        
+        <!-- Logo -->
         <div class="flex items-center gap-2">
             <a href="index.html">
                 <img src="assets/Crown88_Logo_White.png" alt="Crown88 Pakistan Logo" class="h-10 w-auto">
             </a>
         </div>
-        <div class="md:flex items-center gap-8 hidden">
-    <!-- Inactive page (Home): White text, hovers to dark yellow -->
-    <a href="index.html" class="text-white hover:text-secondary-gold font-bold uppercase tracking-wider text-sm transition-colors">Home</a>
-    
-    <!-- Active page (Blog): White text and underline, hovers to dark yellow -->
-    <a href="blog.html" class="text-white font-bold uppercase tracking-wider text-sm border-b-2 border-white pb-1 hover:text-secondary-gold hover:border-secondary-gold transition-colors">Blog</a>
-</div>
-        <div class="flex items-center gap-4">
+
+        <!-- Desktop Navigation (Hidden on Mobile) -->
+        <div class="hidden md:flex items-center gap-8">
+            <!-- Inactive Home Link -->
+            <a href="index.html" class="text-white font-bold uppercase tracking-wider text-sm hover:text-secondary-gold transition-colors">Home</a>
+            <!-- Active Blog Link -->
+            <a href="blogs.html" class="text-white font-bold uppercase tracking-wider text-sm border-b-2 border-white pb-1 hover:text-secondary-gold hover:border-secondary-gold transition-colors">Blog</a>
+            
             <a href="https://crown88.site/pk6" target="_blank">
-                <button class="border border-primary-gold/30 text-primary-gold px-4 py-1.5 rounded text-xs font-bold uppercase tracking-widest bg-primary-gold text-white transition-all">
+                <button class="border border-primary-gold/30 px-4 py-1.5 rounded text-xs font-bold uppercase tracking-widest bg-primary-gold text-white transition-all hover:bg-secondary-gold hover:border-secondary-gold">
                     Login/Register
                 </button>
             </a>
         </div>
+
+        <!-- Mobile Hamburger Icon (Hidden on Desktop) -->
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-white hover:text-secondary-gold focus:outline-none transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Flyout Menu (Hidden by default) -->
+    <!-- Mobile Flyout Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden absolute w-full left-0 top-16 bg-deep-navy/95 border-b border-white/5 backdrop-blur-lg flex-col items-center py-8 gap-6 shadow-2xl md:hidden">
+        
+        <!-- Dedicated Close Button -->
+        <button id="mobile-close-btn" class="absolute top-4 right-6 text-slate-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+
+        <a href="index.html" class="text-white font-bold uppercase tracking-wider text-base hover:text-secondary-gold transition-colors">Home</a>
+        <a href="blogs.html" class="text-white font-bold uppercase tracking-wider text-base border-b-2 border-white pb-1 hover:text-secondary-gold hover:border-secondary-gold transition-colors">Blog</a>
+        <a href="https://crown88.site/pk6" target="_blank">
+            <button class="border border-primary-gold/30 px-8 py-2 rounded text-sm font-bold uppercase tracking-widest bg-primary-gold text-white transition-all hover:bg-secondary-gold hover:border-secondary-gold">
+                Login/Register
+            </button>
+        </a>
     </div>
 </nav>
 
@@ -428,5 +455,28 @@
   </div>
 </div>
 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuBtn ? mobileMenuBtn.querySelector('span') : null;
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                // Toggle the 'hidden' and 'flex' classes to show/hide the menu
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                
+                // Change the material icon from hamburger to close
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.textContent = 'menu';
+                } else {
+                    menuIcon.textContent = 'close';
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>

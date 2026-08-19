@@ -95,27 +95,54 @@ src="https://www.facebook.com/tr?id=1522571916168302&ev=PageView&noscript=1"
 </head>
 <body class="pb-24">
 <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-deep-navy/80 backdrop-blur-lg">
-<div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <!-- logo -->
-<div class="flex items-center gap-2">
-<img src="assets/Crown88_Logo_White.png" alt="Crown88 Pakistan Logo - Best earning game 2026" class="h-10 w-auto">
-</div>
-<!-- end of logo -->
-<div class="md:flex items-center gap-8">
-    <!-- Active page (Home): White text and underline, hovers to dark yellow -->
-    <a href="index.html" class="text-white font-bold uppercase tracking-wider text-sm border-b-2 border-white pb-1 hover:text-secondary-gold hover:border-secondary-gold transition-colors">Home</a>
-    
-    <!-- Inactive page (Blog): White text, hovers to dark yellow -->
-    <a href="blogs.html" class="text-white hover:text-secondary-gold font-bold uppercase tracking-wider text-sm transition-colors">Blog</a>
-</div>
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+            <a href="index.html">
+                <img src="assets/Crown88_Logo_White.png" alt="Crown88 Pakistan Logo - Best earning game 2026" class="h-10 w-auto">
+            </a>
+        </div>
 
+        <!-- Desktop Navigation (Hidden on Mobile) -->
+        <div class="hidden md:flex items-center gap-8">
+            <!-- Active Home Link -->
+            <a href="index.html" class="text-white font-bold uppercase tracking-wider text-sm border-b-2 border-white pb-1 hover:text-secondary-gold hover:border-secondary-gold transition-colors">Home</a>
+            <!-- Inactive Blog Link -->
+            <a href="blogs.html" class="text-white font-bold uppercase tracking-wider text-sm hover:text-secondary-gold transition-colors">Blog</a>
+            
+            <a href="https://crown88.site/pk6" target="_blank" onclick="fbq('track', 'Lead');">
+                <button class="border border-primary-gold/30 px-4 py-1.5 rounded text-xs font-bold uppercase tracking-widest bg-primary-gold text-white transition-all hover:bg-secondary-gold hover:border-secondary-gold">
+                    Login/Register
+                </button>
+            </a>
+        </div>
 
-<a href="https://crown88.site/pk6" target="_blank" onclick="fbq('track', 'Lead');">
-<button class="border border-primary-gold/30 text-primary-gold px-4 py-1.5 rounded text-xs font-bold uppercase tracking-widest bg-primary-gold text-white transition-all">
+        <!-- Mobile Hamburger Icon (Hidden on Desktop) -->
+        <div class="md:hidden flex items-center">
+            <button id="mobile-menu-btn" class="text-white hover:text-secondary-gold focus:outline-none transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Flyout Menu (Hidden by default) -->
+  <!-- Mobile Flyout Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden absolute w-full left-0 top-16 bg-deep-navy/95 border-b border-white/5 backdrop-blur-lg flex-col items-center py-8 gap-6 shadow-2xl md:hidden">
+        
+        <!-- Dedicated Close Button -->
+        <button id="mobile-close-btn" class="absolute top-4 right-6 text-slate-400 hover:text-white transition-colors">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+
+        <a href="index.html" class="text-white font-bold uppercase tracking-wider text-base border-b-2 border-white pb-1 hover:text-secondary-gold hover:border-secondary-gold transition-colors">Home</a>
+        <a href="blogs.html" class="text-white font-bold uppercase tracking-wider text-base hover:text-secondary-gold transition-colors">Blog</a>
+        <a href="https://crown88.site/pk6" target="_blank" onclick="fbq('track', 'Lead');">
+            <button class="border border-primary-gold/30 px-8 py-2 rounded text-sm font-bold uppercase tracking-widest bg-primary-gold text-white transition-all hover:bg-secondary-gold hover:border-secondary-gold">
                 Login/Register
-            </button></a>
-</div>
-</div>
+            </button>
+        </a>
+    </div>
 </nav>
 <!-- ====== Live Tickerr ====== -->
 
@@ -899,6 +926,27 @@ setInterval(autoSlide, 3000); // change every 3 seconds
 </script>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = mobileMenuBtn ? mobileMenuBtn.querySelector('span') : null;
 
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                // Toggle the 'hidden' and 'flex' classes to show/hide the menu
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                
+                // Change the material icon from hamburger to close
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.textContent = 'menu';
+                } else {
+                    menuIcon.textContent = 'close';
+                }
+            });
+        }
+    });
+</script>
 
 </body></html>
